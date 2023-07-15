@@ -6,10 +6,19 @@
   <body>
     <h3>GitOrca</h3>
     <p>welcome to GitOrca, search for developers on GitHub</p>
+    <label>Programming language</label>
     <select id="language">
+      <option value="">---</option>
       <option value="python">Python</option>
       <option value="java">Java</option>
       <option value="javascript">JavaScript</option>
+    </select>
+    <label>Location</label>
+    <select id="location">
+      <option value="">---</option>
+      <option value="france">France</option>
+      <option value="us">US</option>
+      <option value="china">China</option>
     </select>
     <button onclick="search()">Search</button>
     <h4>Profiles</h4>
@@ -21,14 +30,38 @@
         return profiles;
       }
 
+      function paramsToQuery(language, location) {
+        if (!language && !location) {
+          return null;
+        }
+        const queries = [];
+        if (language) {
+          queries.push(`language:${language}`);
+        }
+        if (location) {
+          queries.push(`location:${location}`);
+        }
+        const queryParams = queries.join("+");
+
+        return `?q=${queryParams}`;
+      }
+
       async function search() {
-        const programmingLanguage = document.getElementById("language").value;
+        const language = document.getElementById("language").value;
+        const location = document.getElementById("location").value;
         const table = document.getElementById("profilesTable");
 
-        const url = `https://api.github.com/search/users?q=language:${programmingLanguage}`;
+        const query = paramsToQuery(language, location);
+        if (!query) {
+          alert("select at least one criterias");
+          return
+        }
+        const url = `https://api.github.com/search/users${query}`;
+        console.log(url);
+
         rowsCount = 0;
         const profiles = await getProfiles(url);
-        console.log(profiles)
+        console.log(profiles);
         for (profile of profiles.items) {
           const row = table.insertRow(rowsCount);
           const cellLogin = row.insertCell(0);
