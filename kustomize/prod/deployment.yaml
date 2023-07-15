@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitorca-nginx
+spec:
+  selector:
+    matchLabels:
+      run: gitorca-nginx
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: gitorca-nginx
+    spec:
+      containers:
+      - name: gitorca-nginx
+        image: yacincheffai/gitorca:prod

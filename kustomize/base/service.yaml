@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitorca-nginx-service
+  labels:
+    run: gitorca-nginx-service
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+  selector:
+    run: gitorca-nginx
