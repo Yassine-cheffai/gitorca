@@ -412,7 +412,17 @@
           const cellLogin = row.insertCell(0);
           const cellUrl = row.insertCell(1);
           cellLogin.textContent = profile.login;
-          cellUrl.textContent = profile.html_url;
+          // cellUrl.textContent = `<a href="${profile.html_url}" target="_blank">github account</a>`;
+
+          let linkButton = document.createElement("button");
+          linkButton.setAttribute("class","inline-block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:relative");
+          let link = document.createElement("a");
+          link.setAttribute("href", profile.html_url)
+          link.setAttribute("target", "_blank")
+          link.textContent = "go to profile"
+          linkButton.appendChild(link);
+          cellUrl.appendChild(linkButton);
+
           rowsCount = rowsCount + 1;
         }
       }
