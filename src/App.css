@@ -1,38 +1,95 @@
+body {
+  background-color: rgb(238, 238, 238);
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.search_button {
+  background-color: #363636;
+  border: none;
+  color: white;
+  padding: 3px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 3px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.site_name {
+  color: rgb(43, 43, 43);
+  font-size: 40px;
+  margin-top: 4%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.introduction {
+  margin-bottom: 40px;
+}
+
+.language {
+  margin: 15px;
+}
+
+.location {
+  margin: 15px;
+}
+
+.profile_card {
+  border: 2px solid rgb(82, 82, 82);
+  padding: 0.5rem;
+  border-radius: 6px;
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
+}
+.profile_card_main {
+  display: flex;
+}
+
+.profile_picture {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  margin-left: 2%;
+  vertical-align: bottom;
+}
+
+.profile_title {
+  margin-left: 10px;
+}
+
+.profile_card_header {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 100%;
+}
+
+.profile_card_buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+}
+
+.more_hide_button {
+  background-color: #363636;
+  border: none;
   color: white;
+  padding: 3px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 3px;
+  width: 50px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.profile_card_details {
+  visibility: collapse;
 }
