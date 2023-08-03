@@ -1,17 +1,43 @@
 import { useState } from "react";
-import { user } from "../types";
+import { User } from "../types";
 import "../App.css";
 
 type SearchIProps = {
-  result: user[];
-  setResult: React.Dispatch<React.SetStateAction<user[]>>;
+  setResult: React.Dispatch<React.SetStateAction<User[]>>;
 };
 
-const Search = ({ result, setResult }: SearchIProps) => {
+function paramsToQuery(language: string, location: string) {
+  if (!language && !location) {
+    return null;
+  }
+  const queries = [];
+  if (language) {
+    queries.push(`language:${language}`);
+  }
+  if (location) {
+    queries.push(`location:${location}`);
+  }
+  const queryParams = queries.join("+");
+
+  const page = localStorage.getItem("currentPage");
+  return `?q=${queryParams}&page=${page}&per_page=30`;
+}
+
+const Search = ({ setResult }: SearchIProps) => {
   const [language, setLanguage] = useState<string>("python");
   const [location, setLocation] = useState<string>("Afghanistan");
   const search = () => {
     console.log(language, location);
+    const query = paramsToQuery(language, location);
+    const url = `https://api.github.com/search/users${query}`;
+    console.log(url);
+    fetch(url)
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+        setResult(json.items)
+        // setResult([{avatar_url: "test", html_url: "test", login: "test"}])
+      });
   };
   return (
     <div>

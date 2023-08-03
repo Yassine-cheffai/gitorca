@@ -40,10 +40,10 @@ body {
   border: 2px solid rgb(82, 82, 82);
   padding: 0.5rem;
   border-radius: 6px;
-  width: 60%;
+  width: 50%;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 40px;
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
 }
@@ -61,6 +61,12 @@ body {
 
 .profile_title {
   margin-left: 10px;
+}
+
+.profile_card a {
+  text-decoration: none;
+  color: #363636;
+  cursor: pointer;
 }
 
 .profile_card_header {
@@ -91,5 +97,22 @@ body {
 }
 
 .profile_card_details {
-  visibility: collapse;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.profile_card_details ul {
+  list-style-type: none;
+}
+
+.profile_card_details ul li {
+  margin-top: 10px;
+}
+
+.profile_card_details ul li p {
+  display: inline;
+}
+
+.main_result_area {
+  margin-top: 40px;
 }
