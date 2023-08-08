@@ -97,12 +97,13 @@ body {
 }
 
 .profile_card_details {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
 }
 
 .profile_card_details ul {
   list-style-type: none;
+  text-align: left;
 }
 
 .profile_card_details ul li {

@@ -7,9 +7,11 @@ export type User = {
 };
 
 export type UserDetails = {
-  bio: string
+  id: number;
+  bio: string;
   blog: string;
   company: string;
   email: string;
   login: string;
+  html_url: string;
 };
