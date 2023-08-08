@@ -13,7 +13,6 @@ const ProfileCard = ({ result }: ProfileCardIProps) => {
   const [fetchedProfiles, setFetchedProfiles] = useState<UserDetails[]>([]);
 
   const toggleVisibility = (id: number) => {
-    console.log("toggeling visibility for id", id);
     const detailsMainElements = document.getElementById(id.toString());
     if (detailsMainElements) {
       let state = detailsMainElements.style.display;
@@ -21,9 +20,7 @@ const ProfileCard = ({ result }: ProfileCardIProps) => {
     }
   };
 
-
   const updateDetailsElements = (data: any, id: number) => {
-    console.log("updating details elements for id: ", id, data);
     const loginDetailsElement = document.getElementById(
       `login_${id.toString()}`
     );
@@ -122,9 +119,7 @@ const ProfileCard = ({ result }: ProfileCardIProps) => {
           </button>
         </div>
       </div>
-      <CardDetails
-        id={result.id.toString()}
-      />
+      <CardDetails id={result.id.toString()} />
     </div>
   );
 };
